@@ -32,6 +32,9 @@ class OnboardingViewController: UIViewController {
     /// Button that activates the video tutorial
     @IBOutlet weak var playTutorialButton: UIButton!
     
+    /// Label that emulates the play button's text.
+    @IBOutlet weak var buttonLabel: UILabel!
+    
     /// Button that skips the tutorial
     @IBOutlet weak var skipTutorialButton: UIButton!
     
@@ -97,15 +100,14 @@ class OnboardingViewController: UIViewController {
         
         Tracker.trackEventWith("Pre-Onboarding", action: "Skip", label: nil, value: nil)
         
-        titleLabel?.text = NSLocalizedString("WELCOME_TITLE", value: "Welcome to the Cash in Emergencies toolkit", comment: "Text welcoming the user to the app")
-        subtitleLabel?.text = NSLocalizedString("WELCOME_SUBTITLE", value: "Watch our quick tutorial to find out how it can help you support those affected by emergencies", comment: "Text asking the user to watch the tutorial")
-        playTutorialButton?.setTitle(NSLocalizedString("WELCOME_BUTTON_WATCH", value: "Watch the Video Tutorial", comment: "Button that plays the video tutorial"), for: .normal)
+        titleLabel?.text = NSLocalizedString("WELCOME_TITLE", value: "Get started with the  RCRCM Cash in Emergencies Toolkit", comment: "Text welcoming the user to the app")
+        subtitleLabel?.text = NSLocalizedString("WELCOME_SUBTITLE", value: "Watch our quick tutorial to find out how it can help you support those affected by emergencies.", comment: "Text asking the user to watch the tutorial")
+        buttonLabel?.text = NSLocalizedString("WELCOME_BUTTON_WATCH", value: "Watch the Video Tutorial", comment: "Button that plays the video tutorial")
         skipTutorialButton?.setTitle(NSLocalizedString("WELCOME_BUTTON_SKIP", value: "SKIP", comment: "Button that skips the tutorial"), for: .normal)
     }
     
     /// Displays an alert to the user letting them know that the download of the bundle failed and asks them to retry.
     func handleErrorDownloading() {
-        
         let downloadError = UIAlertController(title: "Sorry", message: "We're having some trouble retrieving the app content. Please check your internet connection and try again", preferredStyle: .alert)
         downloadError.addAction(UIAlertAction(title: "Try again", style: .default, handler: { [weak self] (action) in
             self?.handleDownloadBundle()
