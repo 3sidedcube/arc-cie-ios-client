@@ -102,11 +102,11 @@ class WorkflowViewController: UIViewController {
         
         if criticalToolsButton.isSelected {
             toolkitTableViewController?.showCriticalToolsOnly()
-            toolkitTableViewController?.searchBar.setHeight(0)
+            toolkitTableViewController?.searchBar.set(height: 0)
             Tracker.trackEventWith("Workflow", action: "Critical tools", label: nil, value: nil)
         } else {
             toolkitTableViewController?.redraw()
-            toolkitTableViewController?.searchBar.setHeight(56)
+            toolkitTableViewController?.searchBar.set(height: 56)
             Tracker.trackEventWith("Workflow", action: "Toolkit", label: nil, value: nil)
         }
     }

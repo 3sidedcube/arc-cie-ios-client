@@ -57,12 +57,12 @@ class MarkdownViewController: UIViewController {
             })
             
             DispatchQueue.main.async {
-                 MDCHUDActivityView.finish(in: welf.view.window)
+                HUDActivityView.removeHUDWith(identifier: "", in: welf.view.window)
             }
         }
         
         // called when user touch link
-        downView?.onTouchLink = { [weak self] request in
+        downView?.onTouchLink = { request in
             guard let url = request.url else { return false }
             
             UIApplication.shared.open(url, options: [:], completionHandler: nil)

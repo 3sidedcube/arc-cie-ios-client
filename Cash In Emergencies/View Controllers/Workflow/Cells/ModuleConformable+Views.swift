@@ -35,7 +35,7 @@ class ModuleView: ModuleConformable, Row {
     }
     
     //ROW
-    public var cellClass: AnyClass? {
+    public var cellClass: UITableViewCell.Type? {
         return ModuleTableViewCell.self
     }
     
@@ -113,7 +113,7 @@ class Step: ModuleConformable, Row {
     }
     
     //ROW
-    var cellClass: AnyClass? {
+    var cellClass: UITableViewCell.Type? {
         return ModuleStepTableViewCell.self
     }
     
@@ -175,7 +175,7 @@ class SubStep: ModuleConformable, Row {
         internalModule = module
     }
     
-    var cellClass: AnyClass? {
+    var cellClass: UITableViewCell.Type? {
         return ModuleSubStepTableViewCell.self
     }
     
@@ -311,7 +311,7 @@ class Tool: ModuleConformable, Row {
         internalModule = module
     }
     
-    var cellClass: AnyClass? {
+    var cellClass: UITableViewCell.Type? {
         if #available(iOS 11.0, *) {
             return ToolTableViewCell.self
         } else {

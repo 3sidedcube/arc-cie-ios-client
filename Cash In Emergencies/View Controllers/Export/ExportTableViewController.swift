@@ -26,10 +26,10 @@ class ExportTableViewController: UITableViewController {
     
     @IBAction func handleExportCriticalPath(_ sender: UIButton) {
         
-        MDCHUDActivityView.start(in: view.window, text: "Exporting")
+        HUDActivityView.addHUDWith(identifier: "export_critical_path", to: view.window, withText: "Exporting", style: .default)
         
         defer {
-            MDCHUDActivityView.finish(in: view.window)
+            HUDActivityView.removeHUDWith(identifier: "export_critical_path", in: view.window)
         }
         
         if let criticalPathFile = CSVManager.exportModules(criticalOnly: true) {
@@ -45,10 +45,10 @@ class ExportTableViewController: UITableViewController {
     
     @IBAction func handleExportEntireProgress(_ sender: UIButton) {
         
-        MDCHUDActivityView.start(in: view.window, text: "Exporting")
+        HUDActivityView.addHUDWith(identifier: "export_progress", to: view.window, withText: "Exporting", style: .default)
         
         defer {
-            MDCHUDActivityView.finish(in: view.window)
+            HUDActivityView.removeHUDWith(identifier: "export_progress", in: view.window)
         }
 
         if let criticalPathFile = CSVManager.exportModules(criticalOnly: false) {

@@ -42,7 +42,7 @@ struct ProgressViewModel {
 // MARK: - ThunderTable Conformance
 extension ProgressViewModel: Row {
     
-    var cellClass: AnyClass? {
+    var cellClass: UITableViewCell.Type? {
         return ProgressTableViewCell.self
     }
     

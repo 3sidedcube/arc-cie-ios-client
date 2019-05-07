@@ -35,7 +35,7 @@ class ProgressTableViewController: TableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(valuesChanged), name: NSNotification.Name("ModulesDidIndex"), object: nil)
         
-        overallProgressBarView.barColour = UIColor(hexString: "ed1b2e")
+        overallProgressBarView.barColour = UIColor(hexString: "ed1b2e") ?? .red
         
         // If any of the substeps/tools become completed we need to redraw the tableView to show the updated values
         let notificationName = NSNotification.Name("ModulePropertyChanged")

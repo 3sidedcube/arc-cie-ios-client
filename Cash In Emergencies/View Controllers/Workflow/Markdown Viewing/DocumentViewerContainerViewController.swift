@@ -26,7 +26,7 @@ class DocumentViewerContainerViewController: UIViewController {
     
     @IBOutlet weak var attachedFileView: UIView!
     
-    var toolColour: UIColor = UIColor(hexString: "ed1b2e")
+    var toolColour: UIColor = UIColor(hexString: "ed1b2e") ?? .red
     
     var attachedFile: FileDescriptor?
     
@@ -37,7 +37,7 @@ class DocumentViewerContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        downloadProgressView.barColour = UIColor(hexString: "ed1b2e")
+        downloadProgressView.barColour = UIColor(hexString: "ed1b2e") ?? .red
 
         doneButton?.title = NSLocalizedString("MARKDOWN_DONE", value: "Done", comment: "Button in the navigation bar that dismisses the view")
         
@@ -77,17 +77,13 @@ class DocumentViewerContainerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let window = self.parent?.view.window {
-            MDCHUDActivityView.start(in: window, text: "Loading document")
-        }
+        HUDActivityView.addHUDWith(identifier: "loading_document", to: self.parent?.view.window, withText: "Loading document", style: .default)
     }
     
     @IBAction func pressedExport(_ sender: Any) {
         if let url = attachedFile?.url {
             
-            if let window = self.parent?.view.window {
-                MDCHUDActivityView.start(in: window, text: "Exporting document")
-            }
+            HUDActivityView.addHUDWith(identifier: "exporting_document", to: self.parent?.view.window, withText: "Exporting document", style: .default)
             
             self.toggleUserInteraction(on: false)
             FileExporter.exportFile(url, updateHandler: { (progress) in
@@ -95,9 +91,7 @@ class DocumentViewerContainerViewController: UIViewController {
                         self.downloadProgressView.progress = Double(progress * 100)
                     }
                 }, completionHandler: { (localFileUrl) in
-                    if let window = self.parent?.view.window {
-                        MDCHUDActivityView.finish(in: window)
-                    }
+                    HUDActivityView.removeHUDWith(identifier: "exporting_document", in: self.parent?.view.window)
                     self.toggleUserInteraction(on: true)
                     if let localFileUrl = localFileUrl {
                         self.documentController = UIDocumentInteractionController(url: localFileUrl)

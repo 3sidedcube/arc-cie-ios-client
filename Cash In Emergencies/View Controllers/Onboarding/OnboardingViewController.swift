@@ -79,7 +79,7 @@ class OnboardingViewController: UIViewController {
     // Handles skip button. If the bundle is ready, we just dismiss but if not we throw up a loading indicator and make people wait
     @IBAction func pressedSkip(_ sender: Any) {
         
-        MDCHUDActivityView.start(in: self.view.window, text: "Setting up")
+        HUDActivityView.addHUDWith(identifier: "skip_setup", to: view.window, withText: "Setting up", style: .default)
         userIsReadyToProceed = true
         markOnboardingComplete()
     }
@@ -89,12 +89,12 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Timer.scheduledTimer(withTimeInterval: 1.0, block: {
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (_) in
             if self.userIsReadyToProceed == true && self.hasDownloadedBundle == true {
-                MDCHUDActivityView.finish(in: self.view.window)
+                HUDActivityView.removeHUDWith(identifier: "skip_setup", in: self.view.window)
                 self.dismiss(animated: true, completion: nil)
             }
-        }, repeats: true)
+        }
         
         handleDownloadBundle()
         

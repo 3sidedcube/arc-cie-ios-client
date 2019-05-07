@@ -169,13 +169,11 @@ class ToolkitTableViewController: TableViewController {
     
     @objc func indexDidRefresh() {
         DispatchQueue.main.async {
-            MDCHUDActivityView.start(in: self.view.window)
-            
+            HUDActivityView.addHUDWith(identifier: "reload", to: self.view.window)
         }
         self.reload { [weak self] (error) in
             if error == nil {
-                
-                MDCHUDActivityView.finish(in: self?.view.window)
+                HUDActivityView.removeHUDWith(identifier: "reload", in: self?.view.window)
                 self?.redraw()
             }
         }

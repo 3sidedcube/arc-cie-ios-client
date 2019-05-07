@@ -57,6 +57,7 @@
 		49FE8D881F419F6900B73731 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49FE8D861F419F6900B73731 /* Main.storyboard */; };
 		49FE8D8A1F419F6900B73731 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49FE8D891F419F6900B73731 /* Assets.xcassets */; };
 		49FE8D8D1F419F6900B73731 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49FE8D8B1F419F6900B73731 /* LaunchScreen.storyboard */; };
+		B1F38349225DEABA004A6F93 /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F38348225DEABA004A6F93 /* DismissSegue.swift */; };
 		FF4EF29D1F9F462900CD79DF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4EF29B1F9F461500CD79DF /* Crashlytics.framework */; };
 		FF4EF29E1F9F462900CD79DF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4EF29C1F9F461500CD79DF /* Fabric.framework */; };
 		FF4EF2AE1F9F761600CD79DF /* UIViewController+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4EF2AD1F9F761600CD79DF /* UIViewController+Loading.swift */; };
@@ -197,6 +198,27 @@
 			remoteGlobalIDString = C2E5088119C835A300350F00;
 			remoteInfo = ThunderRequest;
 		};
+		B1F3833B225DE8F1004A6F93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 492F842A1F84D44800BDD72D /* ThunderBasics.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B16234AB1C91F5E3001669BA;
+			remoteInfo = ThunderBasicsMac;
+		};
+		B1F38342225DE8F1004A6F93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 496E46631F960577003F34B8 /* ThunderRequest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B120EE3D207B895800A4A7CA;
+			remoteInfo = ThunderRequestWatch;
+		};
+		B1F38346225DE8F1004A6F93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 492F84571F84D47700BDD72D /* ThunderTable.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B14F944E20444E810014F694;
+			remoteInfo = ThunderTableDemo;
+		};
 		FF72F6841F98F98900912E04 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FF72F67F1F98F98900912E04 /* SwipeCellKit.xcodeproj */;
@@ -291,6 +313,7 @@
 		49FE8D891F419F6900B73731 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49FE8D8C1F419F6900B73731 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49FE8D8E1F419F6900B73731 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1F38348225DEABA004A6F93 /* DismissSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissSegue.swift; sourceTree = "<group>"; };
 		FF0BF03E1F96658C006235CB /* onboarding_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = onboarding_video.mp4; sourceTree = "<group>"; };
 		FF4EF29B1F9F461500CD79DF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FF4EF29C1F9F461500CD79DF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -415,6 +438,7 @@
 		492F83EF1F84D2D300BDD72D /* Utilities + Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B1F38348225DEABA004A6F93 /* DismissSegue.swift */,
 				49CC36CC1F9E147D005A1E19 /* Tracker.swift */,
 				491640811F4C38230084CEE2 /* ARCNavigationController.swift */,
 				491640991F4C71CA0084CEE2 /* GradientImageView.swift */,
@@ -471,6 +495,7 @@
 			children = (
 				492F84301F84D44900BDD72D /* ThunderBasics.framework */,
 				492F84321F84D44900BDD72D /* ThunderBasicsTests.xctest */,
+				B1F3833C225DE8F1004A6F93 /* ThunderBasicsMac.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -480,6 +505,7 @@
 			children = (
 				492F845D1F84D47800BDD72D /* ThunderTable.framework */,
 				492F845F1F84D47800BDD72D /* ThunderTableTests.xctest */,
+				B1F38347225DE8F1004A6F93 /* ThunderTableDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -527,6 +553,7 @@
 				496E46701F960577003F34B8 /* ThunderRequestMac.framework */,
 				496E46721F960577003F34B8 /* ThunderRequestMacTests.xctest */,
 				496E46741F960577003F34B8 /* ThunderRequestTV.framework */,
+				B1F38343225DE8F1004A6F93 /* ThunderRequestWatch.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -664,6 +691,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -788,6 +816,27 @@
 			remoteRef = 496E46731F960577003F34B8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		B1F3833C225DE8F1004A6F93 /* ThunderBasicsMac.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ThunderBasicsMac.framework;
+			remoteRef = B1F3833B225DE8F1004A6F93 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B1F38343225DE8F1004A6F93 /* ThunderRequestWatch.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ThunderRequestWatch.framework;
+			remoteRef = B1F38342225DE8F1004A6F93 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B1F38347225DE8F1004A6F93 /* ThunderTableDemo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ThunderTableDemo.app;
+			remoteRef = B1F38346225DE8F1004A6F93 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		FF72F6851F98F98900912E04 /* SwipeCellKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -845,6 +894,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				498F45731F8274D500E8824C /* ProgressManager.swift in Sources */,
+				B1F38349225DEABA004A6F93 /* DismissSegue.swift in Sources */,
 				FF5CF33D1F94DDD000DF7C5D /* UIViewController+Error.swift in Sources */,
 				492F83E81F84D15100BDD72D /* ModuleConformable+Views.swift in Sources */,
 				49CC36CD1F9E147D005A1E19 /* Tracker.swift in Sources */,

@@ -119,7 +119,7 @@ extension ToolkitTableViewController {
             }
         
             DispatchQueue.main.async {
-                MDCHUDActivityView.start(in: self.view.window, text: "Exporting document")
+                HUDActivityView.addHUDWith(identifier: "export", to: self.view.window, withText: "Exporting document", style: .default)
                  self.toggleUserInteraction(on: false)
             }
            
@@ -127,7 +127,7 @@ extension ToolkitTableViewController {
             FileExporter.exportFile(attachmentUrl, updateHandler: nil, completionHandler: { (localFileUrl) in
                 
                 DispatchQueue.main.async {
-                    MDCHUDActivityView.finish(in: self.view.window)
+                    HUDActivityView.removeHUDWith(identifier: "export", in: self.view.window)
                     self.toggleUserInteraction(on: true)
                     if let localFileUrl = localFileUrl {
                         self.documentController = UIDocumentInteractionController(url: localFileUrl)

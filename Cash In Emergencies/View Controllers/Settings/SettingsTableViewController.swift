@@ -29,7 +29,11 @@ class SettingsTableViewController: UITableViewController {
     let contentController = ContentManager()
     
     /// The bundle information from the server containing information about languages and download URLs
-    var bundleInformation: BundleInformation?
+    var bundleInformation: BundleInformation? {
+        didSet {
+            contentController.cachedBundleInformation = bundleInformation
+        }
+    }
     
     /// Done button to dismiss the view
     @IBOutlet weak var doneButton: UIBarButtonItem!
@@ -61,6 +65,7 @@ class SettingsTableViewController: UITableViewController {
         }
         
         redraw()
+        bundleInformation = contentController.cachedBundleInformation
         getBundleInformation()
         
         title = NSLocalizedString("SETTINGS_TITLE", value: "Settings", comment: "Title for the settings screen shown in the navigation bar")
@@ -174,7 +179,7 @@ class SettingsTableViewController: UITableViewController {
         downloadWarning.addAction(UIAlertAction(title: NSLocalizedString("SETTINGS_ALERT_DOWNLOAD_BUTTON_ACCEPT", value: "Proceed", comment: "Button to proceed with downloading new bundle"), style: .destructive, handler: { [weak self] (action) in
             if let welf = self {
                 welf.navigationItem.rightBarButtonItem?.isEnabled = false
-                MDCHUDActivityView.start(in: welf.view.window)
+                HUDActivityView.addHUDWith(identifier: "download", to: welf.view.window)
                 sender.isEnabled = false
                 welf.downloadBundle()
             }
@@ -223,7 +228,7 @@ class SettingsTableViewController: UITableViewController {
                 languagePicker.addAction(UIAlertAction(title: languageString, style: .default, handler: { (action) in
                     
                     self.navigationItem.rightBarButtonItem?.isEnabled = false
-                    MDCHUDActivityView.start(in: self.view.window)
+                    HUDActivityView.addHUDWith(identifier: "download_bundle", to: self.view.window)
                     UserDefaults.standard.set(language, forKey: "ContentOverrideLanguage")
                     self.downloadBundle()
                 }))
@@ -271,7 +276,7 @@ class SettingsTableViewController: UITableViewController {
             case .success:
                 OperationQueue.main.addOperation({
                     self?.navigationItem.rightBarButtonItem?.isEnabled = true
-                    MDCHUDActivityView.finish(in: self?.view.window)
+                    HUDActivityView.removeHUDWith(identifier: "download_bundle", in: self?.view.window)
                     NotificationCenter.default.post(name: NSNotification.Name("ContentControllerBundleDidUpdate"), object: nil)
                     
                     //Save and reload

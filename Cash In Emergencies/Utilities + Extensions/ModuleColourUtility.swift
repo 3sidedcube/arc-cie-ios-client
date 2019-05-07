@@ -37,11 +37,11 @@ class ModuleColourUtility {
     
         switch moduleHierarchy {
             
-        case "1": return UIColor(hexString: "9D9FA2")
-        case "2": return UIColor(hexString: "F47D78")
-        case "3": return UIColor(hexString: "C5E1B1")
-        case "4": return UIColor(hexString: "9BD7D7")
-        case "5": return UIColor(hexString: "0079A7")
+        case "1": return UIColor(hexString: "9D9FA2") ?? fallBackColour
+        case "2": return UIColor(hexString: "F47D78") ?? fallBackColour
+        case "3": return UIColor(hexString: "C5E1B1") ?? fallBackColour
+        case "4": return UIColor(hexString: "9BD7D7") ?? fallBackColour
+        case "5": return UIColor(hexString: "0079A7") ?? fallBackColour
             
         default:
             // Loop back through the colours by moduling by 5 
